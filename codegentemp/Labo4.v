@@ -1,6 +1,6 @@
 // ======================================================================
 // Labo4.v generated from TopDesign.cysch
-// 03/10/2021 at 16:50
+// 03/10/2021 at 17:19
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -145,7 +145,7 @@
 `include "C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\or_v1_0\or_v1_0.v"
 `endif
 
-// SCB_UART_PDL_v2_0(BaudRate=9600, BitsOrder=0, BreakSignalBits=11, BufferMinSize=64, ByteMode=true, ClkFreqDes=115.2, ClkMinusTolerance=5, ClkPlusTolerance=5, ClockFromTerm=false, ComMode=0, CtsPolarity=0, CtsTermEnable=false, DataWidth=8, Direction=3, DropOnFrameErr=false, DropOnParityErr=false, EnableCts=false, EnableInputFilter=false, EnableMultiProc=false, EnableRts=false, EnableRxOutput=false, EnableTxEn=false, EnableTxOutput=false, InterruptMode=1, InterruptTermEnable=false, IntrRxBreakDetected=false, IntrRxFrameErr=false, IntrRxFull=false, IntrRxNotEmpty=false, IntrRxOverflow=false, IntrRxParityErr=false, IntrRxTrigger=false, IntrRxUnderflow=false, IntrTxEmpty=false, IntrTxNotFull=false, IntrTxOverflow=false, IntrTxTrigger=false, IntrTxUartDone=false, IntrTxUartLostArb=false, IntrTxUartNack=false, IntrTxUnderflow=false, IrdaLowPower=false, IrdaPolarity=0, IsCtsPinAllowed=true, IsDmaCapable=true, IsEnableInputFilterVisible=true, IsMultiprocessorModeAvailable=false, IsRtsPinAllowed=true, IsRtsTriggerLevelVisible=false, IsRxIntrSourcesVisible=false, IsRxTriggerLevelVisible=false, IsTxIntrSourcesVisible=false, IsTxTriggerLevelVisible=false, MaxFifoLevel=127, MpRxAcceptAddress=false, MpRxAddress=0, MpRxAddressMask=255, OvsFactor=12, ParityType=0, PreconfigureIO=false, RemoveCtsPin=true, RemoveIntr=false, RemoveRtsPin=true, RemoveRxPin=false, RemoveRxTxPin=true, RemoveTxEnPin=true, RemoveTxPin=false, RtsPolarity=0, RtsTermEnable=false, RtsTriggerLevel=63, RxIntrMask=0, RxTermEnable=false, RxTriggerLevel=63, RxTxTermEnable=false, ShowTerminals=false, SmCardRetryOnNack=false, StopBits=2, SymbolShape=0, TriggerOutputEnable=false, TxEnTermEnable=false, TxIntrMask=0, TxTermEnable=false, TxTriggerLevel=63, UartMode=2, UseIntr=true, CY_API_CALLBACK_HEADER_INCLUDE=#include "cyapicallbacks.h", CY_COMMENT=, CY_COMPONENT_NAME=SCB_UART_PDL_v2_0, CY_CONFIG_TITLE=UART_1, CY_CONST_CONFIG=true, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=UART_1, CY_INSTANCE_SHORT_NAME=UART_1, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=0, CY_PDL_DRIVER_NAME=scb, CY_PDL_DRIVER_REQ_VERSION=2.0.0, CY_PDL_DRIVER_SUBGROUP=, CY_PDL_DRIVER_VARIANT=, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  4.4, INSTANCE_NAME=UART_1, )
+// SCB_UART_PDL_v2_0(BaudRate=115200, BitsOrder=0, BreakSignalBits=11, BufferMinSize=64, ByteMode=true, ClkFreqDes=1382.4, ClkMinusTolerance=5, ClkPlusTolerance=5, ClockFromTerm=false, ComMode=0, CtsPolarity=0, CtsTermEnable=false, DataWidth=8, Direction=3, DropOnFrameErr=false, DropOnParityErr=false, EnableCts=false, EnableInputFilter=false, EnableMultiProc=false, EnableRts=false, EnableRxOutput=false, EnableTxEn=false, EnableTxOutput=false, InterruptMode=1, InterruptTermEnable=false, IntrRxBreakDetected=false, IntrRxFrameErr=false, IntrRxFull=false, IntrRxNotEmpty=false, IntrRxOverflow=false, IntrRxParityErr=false, IntrRxTrigger=false, IntrRxUnderflow=false, IntrTxEmpty=false, IntrTxNotFull=false, IntrTxOverflow=false, IntrTxTrigger=false, IntrTxUartDone=false, IntrTxUartLostArb=false, IntrTxUartNack=false, IntrTxUnderflow=false, IrdaLowPower=false, IrdaPolarity=0, IsCtsPinAllowed=true, IsDmaCapable=true, IsEnableInputFilterVisible=true, IsMultiprocessorModeAvailable=false, IsRtsPinAllowed=true, IsRtsTriggerLevelVisible=false, IsRxIntrSourcesVisible=false, IsRxTriggerLevelVisible=false, IsTxIntrSourcesVisible=false, IsTxTriggerLevelVisible=false, MaxFifoLevel=127, MpRxAcceptAddress=false, MpRxAddress=0, MpRxAddressMask=255, OvsFactor=12, ParityType=0, PreconfigureIO=false, RemoveCtsPin=true, RemoveIntr=false, RemoveRtsPin=true, RemoveRxPin=false, RemoveRxTxPin=true, RemoveTxEnPin=true, RemoveTxPin=false, RtsPolarity=0, RtsTermEnable=false, RtsTriggerLevel=63, RxIntrMask=0, RxTermEnable=false, RxTriggerLevel=63, RxTxTermEnable=false, ShowTerminals=false, SmCardRetryOnNack=false, StopBits=2, SymbolShape=0, TriggerOutputEnable=false, TxEnTermEnable=false, TxIntrMask=0, TxTermEnable=false, TxTriggerLevel=63, UartMode=2, UseIntr=true, CY_API_CALLBACK_HEADER_INCLUDE=#include "cyapicallbacks.h", CY_COMMENT=, CY_COMPONENT_NAME=SCB_UART_PDL_v2_0, CY_CONFIG_TITLE=UART, CY_CONST_CONFIG=true, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=UART, CY_INSTANCE_SHORT_NAME=UART, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=0, CY_PDL_DRIVER_NAME=scb, CY_PDL_DRIVER_REQ_VERSION=2.0.0, CY_PDL_DRIVER_SUBGROUP=, CY_PDL_DRIVER_VARIANT=, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  4.4, INSTANCE_NAME=UART, )
 module SCB_UART_PDL_v2_0_0 (
     clock,
     cts_in,
@@ -196,10 +196,10 @@ module SCB_UART_PDL_v2_0_0 (
 
 
 	cy_clock_v1_0
-		#(.id("4d3cadb5-d7bf-4263-9134-99ebe885e65d/b68e5b9d-7828-482d-a282-930f990e3b3e"),
+		#(.id("a62d856f-9cb1-4d48-9b48-bb729dc3b8e9/b68e5b9d-7828-482d-a282-930f990e3b3e"),
 		  .source_clock_id(""),
 		  .divisor(0),
-		  .period("8680555555.55556"),
+		  .period("723379629.62963"),
 		  .is_direct(0),
 		  .is_digital(0))
 		SCBCLK
@@ -220,7 +220,7 @@ module SCB_UART_PDL_v2_0_0 (
 	electrical [0:0] tmpSIOVREF__tx_net;
 
 	cy_mxs40_gpio_v1_0
-		#(.id("4d3cadb5-d7bf-4263-9134-99ebe885e65d/65f3af6c-759b-4ccb-8c66-5c95ba1f5f4f"),
+		#(.id("a62d856f-9cb1-4d48-9b48-bb729dc3b8e9/65f3af6c-759b-4ccb-8c66-5c95ba1f5f4f"),
 		  .width(1),
 		  .sio_grp_cnt(0),
 		  .drive_mode("6"),
@@ -255,7 +255,7 @@ module SCB_UART_PDL_v2_0_0 (
 	electrical [0:0] tmpSIOVREF__rx_net;
 
 	cy_mxs40_gpio_v1_0
-		#(.id("4d3cadb5-d7bf-4263-9134-99ebe885e65d/b7e8018e-1ef7-49c0-b5a5-61641a03e31c"),
+		#(.id("a62d856f-9cb1-4d48-9b48-bb729dc3b8e9/b7e8018e-1ef7-49c0-b5a5-61641a03e31c"),
 		  .width(1),
 		  .sio_grp_cnt(0),
 		  .drive_mode("0"),
@@ -342,16 +342,17 @@ endmodule
 // top
 module top ;
 
-          wire  Net_3;
-          wire  Net_11;
-          wire  Net_8;
-          wire  Net_10;
-          wire  Net_9;
-          wire  Net_7;
-          wire  Net_4;
-          wire  Net_5;
-          wire  Net_2;
-          wire  Net_6;
+          wire  Net_23;
+          wire  Net_13;
+          wire  Net_21;
+          wire  Net_18;
+          wire  Net_20;
+          wire  Net_19;
+          wire  Net_17;
+          wire  Net_14;
+          wire  Net_15;
+          wire  Net_12;
+          wire  Net_16;
 
 	wire [0:0] tmpFB_0__LED_net;
 	wire [0:0] tmpIO_0__LED_net;
@@ -389,17 +390,61 @@ module top ;
 		  .siovref(tmpSIOVREF__LED_net));
 
 
-    SCB_UART_PDL_v2_0_0 UART_1 (
+    SCB_UART_PDL_v2_0_0 UART (
         .clock(1'b0),
         .cts_in(1'b0),
-        .interrupt(Net_5),
-        .rts_out(Net_4),
-        .rx_dma(Net_7),
+        .interrupt(Net_15),
+        .rts_out(Net_14),
+        .rx_dma(Net_17),
         .rx_in(1'b0),
-        .rx_tx_out(Net_10),
-        .tx_dma(Net_8),
-        .tx_en_out(Net_11),
-        .tx_out(Net_3));
+        .rx_tx_out(Net_20),
+        .tx_dma(Net_18),
+        .tx_en_out(Net_21),
+        .tx_out(Net_13));
+
+	wire [0:0] tmpFB_0__Bouton_net;
+	wire [0:0] tmpIO_0__Bouton_net;
+	electrical [0:0] tmpSIOVREF__Bouton_net;
+
+	cy_mxs40_gpio_v1_0
+		#(.id("4cca878b-77b5-471d-8aeb-ad6925202455"),
+		  .width(1),
+		  .sio_grp_cnt(0),
+		  .drive_mode("2"),
+		  .ibuf_enabled("1"),
+		  .init_dr_st("1"),
+		  .input_sync("0"),
+		  .intr_mode("3"),
+		  .io_voltage(""),
+		  .output_conn("0"),
+		  .oe_conn("0"),
+		  .output_sync("0"),
+		  .oe_sync("0"),
+		  .drive_strength("0"),
+		  .max_frequency("100"),
+		  .i2c_mode("0"),
+		  .output_current_cap("8"),
+		  .pin_aliases(""),
+		  .pin_mode("I"),
+		  .slew_rate("0"),
+		  .vtrip("0"),
+		  .use_annotation("0"),
+		  .hotswap_needed("0"))
+		Bouton
+		 (.oe({1'b1}),
+		  .y({1'b0}),
+		  .fb({tmpFB_0__Bouton_net[0:0]}),
+		  .io({tmpIO_0__Bouton_net[0:0]}),
+		  .siovref(tmpSIOVREF__Bouton_net));
+
+
+
+	cy_mxs40_isr_v1_0
+		#(.deepsleep_required(0),
+		  .int_type(2'b10))
+		Bouton_ISR
+		 (.int_signal(1'b1));
+
 
 
 

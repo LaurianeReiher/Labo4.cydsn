@@ -102,8 +102,8 @@
 #include "cyfitter_gpio.h"
 #include "cyfitter_sysint.h"
 #include "cydisabledsheets.h"
-#include "UART_1.h"
-#include "UART_1_SCBCLK.h"
+#include "UART.h"
+#include "UART_SCBCLK.h"
 
 /*[]*/
 
