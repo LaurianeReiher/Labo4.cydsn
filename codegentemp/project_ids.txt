@@ -1,6 +1,6 @@
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|43c5fe3a-478e-4191-946b-f6702dea01d6
-C:\Users\Lauriane\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|f76f18c0-808a-4338-aa6b-56704cdda3db
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|bdb5a4c1-24ce-4374-9422-9c6da2391149
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|2aa503d7-6b12-4df2-83a3-549a22c4dc83
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|00f6f8a7-9996-403e-b4ac-2cf376bcc7d3
-C:\Users\Lauriane\Documents\PSoC Creator\Laboratoire4\Labo4.cydsn\Labo4.cyprj|5717ceea-ea25-4625-bd1e-9ac3091a14cb
+C:\Users\Lauriane\Documents\PSoC Creator\Laboratoire4\Labo4.cydsn\Labo4.cyprj|9535207e-fb12-4a93-ad83-96470938760a
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|1d8b023d-716c-441a-bcbf-b5afb19c272c
+C:\Users\Lauriane\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|543c2927-66a0-4a13-8990-04e8f94b8a61
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|a87d7aed-9da5-43d3-b28b-cbf39ab8894f
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|991526d5-e52a-42c8-b223-cbb68fc707f6
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|674f7620-7cd1-4624-9694-aef8def8ee98

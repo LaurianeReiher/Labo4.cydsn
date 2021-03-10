@@ -14,3 +14,29 @@ net CPUSS_swj_swdio_tms
 	switch ":CPUSS[0]swj_swdio_tms_input_permute.CPUSS[0]swj_swdio_tms==>:CPUSScontainer:CPUSS[0].swj_swdio_tms"
 	term   ":CPUSScontainer:CPUSS[0].swj_swdio_tms"
 end CPUSS_swj_swdio_tms
+net \UART_1:Net_1172\
+	term   ":ioport0:pin2.fb"
+	switch ":ioport0:pin2.fb==>:ioport0:smartio_mux_out2.direct_in"
+	switch ":ioport0:smartio_mux_out2.smartio_mux_out==>:ioport0:hsiomIn2.hsiomIn2"
+	switch ":ioport0:hsiomIn2.fixedOut2_ACT_6==>:SCB[0]uart_rx_input_permute.ioport0_fixedOut2_ACT_6"
+	switch ":SCB[0]uart_rx_input_permute.SCB[0]uart_rx==>:SCBcontainer:SCB[0].uart_rx"
+	term   ":SCBcontainer:SCB[0].uart_rx"
+end \UART_1:Net_1172\
+net \UART_1:Net_847_ff0\
+	term   ":Clockcontainer:Clock[0].ff_div_0"
+	switch ":Clockcontainer:Clock[0].ff_div_0==>:Clockcontainer:ff_permute.ff_div_0"
+	switch ":Clockcontainer:ff_permute.Clock[0]ff_div_0==>:SCBcontainer:SCB[0].clock"
+	term   ":SCBcontainer:SCB[0].clock"
+end \UART_1:Net_847_ff0\
+net \UART_1:intr_wire\
+	term   ":SCBcontainer:SCB[0].interrupt"
+	switch ":SCBcontainer:SCB[0].interrupt==>:intc_0:interrupt41.interrupt"
+	term   ":intc_0:interrupt41.interrupt"
+end \UART_1:intr_wire\
+net \UART_1:tx_wire\
+	term   ":SCBcontainer:SCB[0].uart_tx"
+	switch ":SCBcontainer:SCB[0].uart_tx==>:ioport0:hsiomOut3.fixedIn3_ACT_6"
+	switch ":ioport0:hsiomOut3.hsiomOut3==>:ioport0:smartio_mux_in3.direct_out"
+	switch ":ioport0:smartio_mux_in3.smartio_mux_in==>:ioport0:pin3.pin_input"
+	term   ":ioport0:pin3.pin_input"
+end \UART_1:tx_wire\

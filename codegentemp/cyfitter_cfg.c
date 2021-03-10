@@ -209,6 +209,11 @@ static void ClockInit(void)
 
 	/* Set memory wait states based on 100 MHz HFClk[0] */
 	Cy_SysLib_SetWaitStates(false, 100);
+
+	/* Configure peripheral clock dividers */
+	Cy_SysClk_PeriphAssignDivider(PCLK_SCB0_CLOCK, CY_SYSCLK_DIV_16_BIT, 0u);
+	Cy_SysClk_PeriphSetDivider(CY_SYSCLK_DIV_16_BIT, 0u, 433u);
+	Cy_SysClk_PeriphEnableDivider(CY_SYSCLK_DIV_16_BIT, 0u);
 }
 
 
@@ -276,6 +281,40 @@ void Cy_SystemInit(void)
 
 	/* Clock */
 	ClockInit();
+
+	/* Port0 configuration */
+	{
+	    const cy_stc_gpio_prt_config_t port0_cfg =
+	    {
+	        .out        = 0x0000000Cu,
+	        .intrMask   = 0x00000000u,
+	        .intrCfg    = 0x00000000u,
+	        .cfg        = 0x00006800u,
+	        .cfgIn      = 0x00000000u,
+	        .cfgOut     = 0x00000000u,
+	        .cfgSIO     = 0x00000000u,
+	        .sel0Active = 0x12120000u,
+	        .sel1Active = 0x00000000u,
+	    };
+	    (void)Cy_GPIO_Port_Init(GPIO_PRT0, &port0_cfg);
+	}
+
+	/* Port1 configuration */
+	{
+	    const cy_stc_gpio_prt_config_t port1_cfg =
+	    {
+	        .out        = 0x00000002u,
+	        .intrMask   = 0x00000000u,
+	        .intrCfg    = 0x00000000u,
+	        .cfg        = 0x00000020u,
+	        .cfgIn      = 0x00000000u,
+	        .cfgOut     = 0x00000000u,
+	        .cfgSIO     = 0x00000000u,
+	        .sel0Active = 0x00000000u,
+	        .sel1Active = 0x00000000u,
+	    };
+	    (void)Cy_GPIO_Port_Init(GPIO_PRT1, &port1_cfg);
+	}
 
 	/* Port6 configuration */
 	{
