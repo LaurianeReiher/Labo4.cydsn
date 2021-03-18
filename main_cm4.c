@@ -22,7 +22,17 @@
 #include "params.h"
 #include "queue.h"
 
-SemaphoreHandle_t semaphore = NULL;
+volatile SemaphoreHandle_t bouton_semph;
+
+task_params_t task_A = {
+    .delay = 1000,
+    .message = "Tache A en cours\n\r"
+};
+
+task_params_t task_B = {
+    .delay = 999,
+    .message = "Tache B en cours\n\r"
+};
 
 // Partie 1 
 
@@ -41,52 +51,71 @@ void vGreenTask ()
 
 void isr_bouton(void)
 {
-    Cy_SysPm_PmicUnlock();
-    xSemaphoreGiveFromISR(semaphore, NULL);
+    //Cy_SysPm_PmicUnlock();
+    xSemaphoreGiveFromISR(bouton_semph, NULL);
     Cy_GPIO_ClearInterrupt(Bouton_0_PORT, Bouton_0_NUM);
     NVIC_ClearPendingIRQ(Bouton_ISR_cfg.intrSrc);
 }
 
 void bouton_Task()
 {
-    //vTaskDelay(pdMS_TO_TICKS(20));
-    xSemaphoreTake(semaphore, pdMS_TO_TICKS(20));
-    if(semaphore != NULL )
+    
+    for (;;)
     {
+        xSemaphoreTake(bouton_semph, portMAX_DELAY);
+        vTaskDelay(pdMS_TO_TICKS(20));
         
-        if( xSemaphoreTake(semaphore, pdMS_TO_TICKS(20)) == pdTRUE ) // Si on obtient le sémaphore, c'est que le bouton a été appuyé. 
         {
+        
+            if(Cy_GPIO_Read(Bouton_0_PORT, Bouton_0_NUM)==0)  
+            {
             UART_PutString("Bouton appuye");
-            xSemaphoreGive(semaphore);
+            
+            }
+            else
+            {
+            UART_PutString("Bouton relache");  
+            }
         }
-        else
-        {
-            UART_PutString("Bouton relache"); // Le sémaphore est indisponible, donc le bouton n'est pas appuyé. 
-        }
+        bouton_semph = xSemaphoreCreateBinary();
     }
+    
     
     
     
 }
 
+// Partie 3 
+task_params_t *pointeurA = &task_A;
+task_params_t *pointeurB = &task_B;
+
+/* void print_loop(void *params)
+{
+    
+} */
+
 int main(void)
 {
+    
+    bouton_semph = xSemaphoreCreateBinary();
+    
     __enable_irq(); /* Enable global interrupts. */
-    
-    SemaphoreHandle_t semaphore = NULL;
-    
-    semaphore = xSemaphoreCreateBinary();
-    // Partie 1
-    xTaskCreate(vGreenTask, "led", 80, NULL, 3, NULL);
-    vTaskStartScheduler();
-    
-    // Partie 2
-    UART_Start();
+    Cy_SysInt_Init(&Bouton_ISR_cfg, isr_bouton);
     Cy_GPIO_ClearInterrupt(Bouton_0_PORT, Bouton_0_NUM);
     NVIC_ClearPendingIRQ(Bouton_ISR_cfg.intrSrc);
     
+    // Partie 1
+    xTaskCreate(vGreenTask, "led", 80, NULL, 3, NULL);
+    
+    
+    // Partie 2
+    UART_Start();
+    xTaskCreate(bouton_Task, "Bouton", 80, NULL, 3, NULL);
+    
+    
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
-
+    
+    vTaskStartScheduler();
     for(;;)
     {
         /* Place your application code here. */

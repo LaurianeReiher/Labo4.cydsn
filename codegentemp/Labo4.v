@@ -1,6 +1,6 @@
 // ======================================================================
 // Labo4.v generated from TopDesign.cysch
-// 03/10/2021 at 17:19
+// 03/18/2021 at 14:57
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -342,7 +342,6 @@ endmodule
 // top
 module top ;
 
-          wire  Net_23;
           wire  Net_13;
           wire  Net_21;
           wire  Net_18;
@@ -353,6 +352,7 @@ module top ;
           wire  Net_15;
           wire  Net_12;
           wire  Net_16;
+          wire  Net_24;
 
 	wire [0:0] tmpFB_0__LED_net;
 	wire [0:0] tmpIO_0__LED_net;
@@ -363,7 +363,7 @@ module top ;
 		  .width(1),
 		  .sio_grp_cnt(0),
 		  .drive_mode("2"),
-		  .ibuf_enabled("0"),
+		  .ibuf_enabled("1"),
 		  .init_dr_st("1"),
 		  .input_sync("0"),
 		  .intr_mode("0"),
@@ -377,7 +377,7 @@ module top ;
 		  .i2c_mode("0"),
 		  .output_current_cap("8"),
 		  .pin_aliases(""),
-		  .pin_mode("O"),
+		  .pin_mode("IO"),
 		  .slew_rate("0"),
 		  .vtrip("0"),
 		  .use_annotation("0"),
@@ -439,11 +439,18 @@ module top ;
 
 
 
+	cy_gsref_v1_0
+		#(.guid("8C3B410E-0600-5ECF-95DD-0AF91BF8D8A7"))
+		GlobalSignal_1
+		 (.sig_out(Net_24));
+
+
+
 	cy_mxs40_isr_v1_0
 		#(.deepsleep_required(0),
-		  .int_type(2'b10))
+		  .int_type(2'b01))
 		Bouton_ISR
-		 (.int_signal(1'b1));
+		 (.int_signal(Net_24));
 
 
 

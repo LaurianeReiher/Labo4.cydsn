@@ -2,7 +2,7 @@
 --	Conversion of Labo4.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Wed Mar 10 17:19:53 2021
+--	Thu Mar 18 14:57:46 2021
 --
 
 USE cypress.cypress.all;
@@ -53,6 +53,7 @@ SIGNAL Net_13 : bit;
 SIGNAL tmpFB_0__Bouton_net_0 : bit;
 SIGNAL tmpIO_0__Bouton_net_0 : bit;
 TERMINAL tmpSIOVREF__Bouton_net_0 : bit;
+SIGNAL Net_24 : bit;
 BEGIN
 
 one <=  ('1') ;
@@ -65,7 +66,7 @@ LED:cy_mxs40_gpio_v1_0
 		sio_grp_cnt=>0,
 		id=>"a61270bc-07ec-447d-ac9e-34cfe85c30e9",
 		drive_mode=>"2",
-		ibuf_enabled=>"0",
+		ibuf_enabled=>"1",
 		init_dr_st=>"1",
 		input_sync=>"0",
 		intr_mode=>"0",
@@ -79,7 +80,7 @@ LED:cy_mxs40_gpio_v1_0
 		output_current_cap=>"8",
 		i2c_mode=>"0",
 		pin_aliases=>"",
-		pin_mode=>"O",
+		pin_mode=>"IO",
 		slew_rate=>"0",
 		vtrip=>"0",
 		use_annotation=>"0",
@@ -227,10 +228,13 @@ Bouton:cy_mxs40_gpio_v1_0
 		io=>(tmpIO_0__Bouton_net_0),
 		annotation=>(open),
 		siovref=>(tmpSIOVREF__Bouton_net_0));
+GlobalSignal_1:cy_gsref_v1_0
+	GENERIC MAP(guid=>"8C3B410E-0600-5ECF-95DD-0AF91BF8D8A7")
+	PORT MAP(sig_out=>Net_24);
 Bouton_ISR:cy_mxs40_isr_v1_0
 	GENERIC MAP(cy_registers=>"",
 		deepsleep_required=>'0',
-		int_type=>"10")
-	PORT MAP(int_signal=>one);
+		int_type=>"01")
+	PORT MAP(int_signal=>Net_24);
 
 END R_T_L;
