@@ -41,9 +41,11 @@ void vGreenTask ()
     for(;;)
     {
         vTaskDelay(pdMS_TO_TICKS(500));
-        Cy_GPIO_Write(LED_0_PORT, LED_0_NUM, 0);
-        vTaskDelay(pdMS_TO_TICKS(500));
-        Cy_GPIO_Write(LED_0_PORT, LED_0_NUM, 1);
+        Cy_GPIO_Write(LED_0_PORT, LED_0_NUM,!(Cy_GPIO_Read(LED_0_PORT, LED_0_NUM)));
+        
+        //Cy_GPIO_Write(LED_0_PORT, LED_0_NUM, 0);
+        //vTaskDelay(pdMS_TO_TICKS(500));
+        //Cy_GPIO_Write(LED_0_PORT, LED_0_NUM, 1);
     }
 }
 
@@ -51,7 +53,7 @@ void vGreenTask ()
 
 void isr_bouton(void)
 {
-    //Cy_SysPm_PmicUnlock();
+    Cy_SysPm_PmicUnlock();
     xSemaphoreGiveFromISR(bouton_semph, NULL);
     Cy_GPIO_ClearInterrupt(Bouton_0_PORT, Bouton_0_NUM);
     NVIC_ClearPendingIRQ(Bouton_ISR_cfg.intrSrc);
