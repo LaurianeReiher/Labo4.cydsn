@@ -22,7 +22,7 @@
 #include "params.h"
 #include "queue.h"
 
-SemaphoreHandle_t semaphore;
+SemaphoreHandle_t semaphore = NULL;
 
 // Partie 1 
 
@@ -41,6 +41,7 @@ void vGreenTask ()
 
 void isr_bouton(void)
 {
+    Cy_SysPm_PmicUnlock();
     xSemaphoreGiveFromISR(semaphore, NULL);
     Cy_GPIO_ClearInterrupt(Bouton_0_PORT, Bouton_0_NUM);
     NVIC_ClearPendingIRQ(Bouton_ISR_cfg.intrSrc);
@@ -48,14 +49,22 @@ void isr_bouton(void)
 
 void bouton_Task()
 {
-    //xSemaphoreTakeFromISR(semaphore, NULL);
-    vTaskDelay(pdMS_TO_TICKS(20));
-    if (xSemaphoreTakeFromISR(semaphore, NULL)==pdTRUE)
+    //vTaskDelay(pdMS_TO_TICKS(20));
+    xSemaphoreTake(semaphore, pdMS_TO_TICKS(20));
+    if(semaphore != NULL )
     {
-        UART_PutString("Bouton appuye");
+        
+        if( xSemaphoreTake(semaphore, pdMS_TO_TICKS(20)) == pdTRUE ) // Si on obtient le sémaphore, c'est que le bouton a été appuyé. 
+        {
+            UART_PutString("Bouton appuye");
+            xSemaphoreGive(semaphore);
+        }
+        else
+        {
+            UART_PutString("Bouton relache"); // Le sémaphore est indisponible, donc le bouton n'est pas appuyé. 
+        }
     }
-    else 
-        UART_PutString("Bouton relache");
+    
     
     
 }
@@ -63,6 +72,8 @@ void bouton_Task()
 int main(void)
 {
     __enable_irq(); /* Enable global interrupts. */
+    
+    SemaphoreHandle_t semaphore = NULL;
     
     semaphore = xSemaphoreCreateBinary();
     // Partie 1
