@@ -71,12 +71,12 @@ void bouton_Task()
         
             if(Cy_GPIO_Read(Bouton_0_PORT, Bouton_0_NUM)==0)  
             {
-            UART_PutString("Bouton appuye");
+            UART_PutString("Bouton appuye\n\r");
             
             }
             else
             {
-            UART_PutString("Bouton relache");  
+            UART_PutString("Bouton relache\n\r");  
             }
         }
         bouton_semph = xSemaphoreCreateBinary();
@@ -105,6 +105,7 @@ int main(void)
     Cy_SysInt_Init(&Bouton_ISR_cfg, isr_bouton);
     Cy_GPIO_ClearInterrupt(Bouton_0_PORT, Bouton_0_NUM);
     NVIC_ClearPendingIRQ(Bouton_ISR_cfg.intrSrc);
+    NVIC_EnableIRQ(Bouton_ISR_cfg.intrSrc);
     
     // Partie 1
     xTaskCreate(vGreenTask, "led", 80, NULL, 3, NULL);
