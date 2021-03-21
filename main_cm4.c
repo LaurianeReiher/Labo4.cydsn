@@ -89,6 +89,8 @@ void bouton_Task()
 task_params_t *pointeurA = &task_A;
 task_params_t *pointeurB = &task_B;
 
+
+
  void print_loop(void *params)  // affiche périodiquement un message via le UART. 
 {
     task_params_t parametre = *(task_params_t *)params;
@@ -96,27 +98,15 @@ task_params_t *pointeurB = &task_B;
     for (;;)
     {
        vTaskDelay(pdMS_TO_TICKS(parametre.delay));
-       UART_PutString(parametre.message); 
-        
-// Façon un peu sketch de faire (marche seulement pour les deux tâches définies)
-
-        /* if (params == &task_A)
-        {
-            vTaskDelay(pdMS_TO_TICKS(task_A.delay));
-            UART_PutString(task_A.message); 
-        }
-        else if (params == &task_B)
-        {
-            vTaskDelay(pdMS_TO_TICKS(task_B.delay));
-            UART_PutString(task_B.message); 
-        } */
-    }
+       //UART_PutString(parametre.message); 
     
-    // Bonus : modifier la fonction pour qu'elle insère les messages dans la file
-    // plutôt que de les envoyer via le UART
-} 
+       char* message = parametre.message;
+       
+       xQueueSend(print_queue, &message, parametre.delay); 
+       
+    }
 
-// Bonus 
+} 
 
 void print()
 {
@@ -127,6 +117,8 @@ void print()
         UART_PutString(message);
     }
 }
+
+
 
 int main(void)
 {
@@ -149,6 +141,9 @@ int main(void)
     
     xTaskCreate(print_loop, "task A", configMINIMAL_STACK_SIZE, (void *) &task_A, 1, NULL);
     xTaskCreate(print_loop, "task B", configMINIMAL_STACK_SIZE, (void *) &task_B, 1, NULL);
+    
+    
+    xTaskCreate(print, "Affichage", 80, NULL, 1, NULL);
     
     
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
