@@ -34,6 +34,8 @@ task_params_t task_B = {
     .message = "Tache B en cours\n\r"
 };
 
+QueueHandle_t print_queue;
+
 // Partie 1 
 
 void vGreenTask ()
@@ -81,10 +83,6 @@ void bouton_Task()
         }
         bouton_semph = xSemaphoreCreateBinary();  // Création d'un nouveau sémaphore car simplement redonner le premier pose problème
     }
-    
-    
-    
-    
 }
 
 // Partie 3 
@@ -93,25 +91,48 @@ task_params_t *pointeurB = &task_B;
 
  void print_loop(void *params)  // affiche périodiquement un message via le UART. 
 {
+    task_params_t parametre = *(task_params_t *)params;
+    
     for (;;)
     {
-        if (params == &task_A)
+       vTaskDelay(pdMS_TO_TICKS(parametre.delay));
+       UART_PutString(parametre.message); 
+        
+// Façon un peu sketch de faire (marche seulement pour les deux tâches définies)
+
+        /* if (params == &task_A)
         {
             vTaskDelay(pdMS_TO_TICKS(task_A.delay));
-            UART_PutString(task_A.message);
+            UART_PutString(task_A.message); 
         }
         else if (params == &task_B)
         {
             vTaskDelay(pdMS_TO_TICKS(task_B.delay));
-            UART_PutString(task_B.message);
-        }
+            UART_PutString(task_B.message); 
+        } */
     }
+    
+    // Bonus : modifier la fonction pour qu'elle insère les messages dans la file
+    // plutôt que de les envoyer via le UART
 } 
+
+// Bonus 
+
+void print()
+{
+    char *message;
+    for (;;)
+    {
+        xQueueReceive(print_queue, &message, portMAX_DELAY);
+        UART_PutString(message);
+    }
+}
 
 int main(void)
 {
     
     bouton_semph = xSemaphoreCreateBinary();
+    print_queue = xQueueCreate(2, sizeof(char *));
     
     __enable_irq(); /* Enable global interrupts. */
     
